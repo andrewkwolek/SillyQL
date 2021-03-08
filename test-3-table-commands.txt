@@ -1,0 +1,22 @@
+CREATE umich 3 string double string student gpa year
+GENERATE FOR umich hash INDEX ON year
+GENERATE FOR umich bst INDEX ON gpa
+INSERT INTO umich 4 ROWS
+Andrew 3.1 junior
+Nick 3.9 junior
+Lindsey 3.5 sophomore
+Anya 0.01 freshman
+PRINT FROM umich 1 gpa ALL
+GENERATE FOR umich hash INDEX ON student
+PRINT FROM umich 2 gpa year WHERE student = Andrew
+DELETE FROM umich WHERE gpa < 3.1
+CREATE copy 3 string double string student gpa year
+INSERT INTO umich 4 ROWS
+Andrew 3.1 junior
+Nick 3.9 junior
+Lindsey 3.5 sophomore
+Anya 0.01 freshman
+JOIN umich AND copy WHERE student = student AND PRINT 3 student 1 gpa 2 year 2
+REMOVE umich
+REMOVE copy
+QUIT
